@@ -1,0 +1,11 @@
+{
+  "name": "totoro-log-analyse",
+  "version": "0.3.0",
+  "dependencies": {
+      "commander": "1.2.0",
+      "colorful": "2.1.0",
+      "line-reader": "0.2.3",
+      "when": "2.2.1",
+      "shelljs": "*"
+  }
+}
