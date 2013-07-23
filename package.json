@@ -6,6 +6,8 @@
       "colorful": "2.1.0",
       "line-reader": "0.2.3",
       "when": "2.2.1",
+      "useragent":"2.0.3",
+      "pretty-data": "*",
       "shelljs": "*"
   }
 }
