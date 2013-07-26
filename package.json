@@ -8,6 +8,7 @@
       "when": "2.2.1",
       "useragent":"2.0.3",
       "pretty-data": "*",
-      "shelljs": "*"
+      "shelljs": "*",
+      "dateformat": "*"
   }
 }
