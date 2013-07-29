@@ -5,7 +5,7 @@ var path = require('path')
 var commander = require('commander')
 var colorful = require('colorful')
 
-var analyse = require('../lib/analyse')
+var logService = require('../lib/log-service')
 
 commander
     .description('totoro server log analyse')
@@ -50,4 +50,6 @@ function helpInfo() {
     ].join('\n')
 }
 
-analyse(commander.path)
+logService.analyse({}, function() {
+    process.exit()
+})
