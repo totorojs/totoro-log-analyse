@@ -10,25 +10,34 @@
 
 <div ng-app="totoroLog">
     <div ng-controller="LogCtrl">
-    </div>
+       <ul>
+          <li>测试总数: {{logs.totalTests}}</li>
+          <li>浏览器测试次数: {{logs.totalBrowsersTests}}</li>
+          <li>平均测试用例: {{logs.totalTc / logs.succTests}}</li>
+          <li>平均覆盖率: {{logs.totalCov / logs.succTests}}</li>
+          <li>浏览器平均运行时间: {{logs.totalDuration / logs.succTests}}</li>
+          <li>测试平均时间: {{logs.totalTime / logs.succTests}}</li>
+          <li>测试用例最多项目: {{logs.maxTC[0]}} : {{logs.maxTC[1]}}</li>
+          <li>测试覆盖率最高项目: {{logs.maxCov[0]}} : {{logs.maxCov[1]}}</li>
 
+       </ul>
+    </div>
 </div>
 
-<script src="../sea-modules/seajs/seajs/2.1.1/sea.js"></script>
+<script src="./sea-modules/seajs/seajs/2.1.1/sea.js"></script>
 <script>
 
   // Set configuration
   seajs.config({
-    base: "../sea-modules/",
+    base: "/sea-modules/",
     alias: {
-      "angularjs": "angular/angularjs/1.1.5/angular.js",
-      "ngResource": "angular/angularjs/1.1.5/angular-resource.js",
-      "logApp": "../static/log-app/src/app.js"
+      "angularjs": "/sea-modules/angular/angularjs/1.1.5/angular.js",
+      "ngResource": "/sea-modules/angular/angularjs/1.1.5/angular-resource.js",
+      "logApp": "./log-app/src/app.js"
     }
   })
 
   seajs.use("logApp", function(app) {
-      console.info('1----')
 
   })
 
