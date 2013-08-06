@@ -8,6 +8,9 @@
       "when": "2.2.1",
       "useragent":"2.0.3",
       "pretty-data": "*",
+      "socket.io": "~0.9.16",
+      "express": "~3.2.6",
+      "consolidate": "0.9.1",
       "shelljs": "*",
       "dateformat": "*"
   }
