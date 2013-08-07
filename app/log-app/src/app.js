@@ -8,8 +8,6 @@ define(function(require, exports, module) {
 
   app.controller('overviewCtrl', ['$scope', 'logService', function($scope, logService) {
 
-      $scope.isWeek = true
-      $scope.isAll = false
 
       $scope.selectDate = function(type) {
           if (type === 'week') {
@@ -23,7 +21,7 @@ define(function(require, exports, module) {
           loadLog(type)
       }
 
-      $scope.selectDate('week')
+      $scope.selectDate('all')
 
       function loadLog(date) {
           if (date === 'week') {
@@ -72,6 +70,22 @@ define(function(require, exports, module) {
           }
       }
   }])
+
+  app.directive('tdlink', function() {
+      return {
+          restrict: 'A',
+          compile: function compile(tElement, tAttrs, transclude) {
+              return {
+                  pre: function preLink(scope, element, attrs) { 
+                  },
+                  post: function postLink(scope, element, attrs) { 
+                  } 
+              }
+          },
+          replace: true 
+      }
+  })
+  
 
   app.factory('socket', function ($rootScope) {
       var socket = io.connect();
