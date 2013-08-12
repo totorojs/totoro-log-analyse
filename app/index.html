@@ -5,64 +5,77 @@
     <meta charset="utf-8">
     <title>totoro-log</title>
     <link rel="canonical" href="./npm_files/npm.html">
-    <link type="text/css" rel="stylesheet" media="all" href="./css/normalize.css">
     <link type="text/css" rel="stylesheet" media="all" href="./css/index.css">
     <link type="text/css" rel="stylesheet" media="all" href="./css/bootstrap.css">
   </head>
   <body ng-app="totoroLog">
   <div id="wrap">
+    <h1>totoro 日志分析</h1> 
     <div id="content" ng-controller="overviewCtrl">
-    <nav>
-      <ul>
-        <li class="home">
-          <button type="button" class="btn btn-lg btn-primary" ng-click="selectDate('week')" ng-disabled="isWeek">一周</button>
-        </li>
+
+      <ul class="nav nav-pills"">
         <li class="download">
         <button type="button" class="btn btn-lg btn-primary" ng-click="selectDate()" ng-disabled="isAll">所有</button>
         </li>
+         <li class="home">
+          <button type="button" class="btn btn-lg btn-primary" ng-click="selectDate('week')" ng-disabled="isWeek">一周</button>
+        </li>
       </ul>
-    </nav>
-
-    <div id="page">
-
       <div id="index">
-        <h1>totoro 日志查看系统</h1>
+        <h3>Overview</h3>
   
         <table class="table table-striped">
           <p class="text-info" ng-hide="loaded">加载中...</p>
           <tbody ng-show="loaded">
-            <tr><td>测试总数</td><td>{{logs.totalTests || 0}}</td></tr>
-            <tr><td>成功测试数</td><td> {{logs.succTests}}</td></tr>
-            <tr><td>浏览器测试次数</td><td> {{logs.totalBrowsersTests}}</td></tr>
-            <tr><td>平均测试用例</td><td> {{logs.totalTc / logs.succTests | number:2}}</td></tr>
-            <tr><td>平均覆盖率</td><td> {{logs.totalCov / logs.succTests | number:2}}</td></tr>
-            <tr><td>浏览器平均运行时间</td><td> {{(logs.totalDuration / logs.succTests) / 1000 | number:2}}s</td></tr>
-            <tr><td>测试平均时间</td><td> {{(logs.totalTime / logs.succTests) / 1000 | number:2}}s</td></tr>
-            <tr><td>测试用例最多项目</td><td> {{logs.maxTC[0]}} : {{logs.maxTC[1]}}</td></tr>
-            <tr><td>测试覆盖率最高项目</td><td> {{logs.maxCov[0]}} : {{logs.maxCov[1]}}</td></tr>
+             <tr>
+                <td>测试总数</td><td>{{logs.totalTests || 0}}</td>
+                <td>浏览器测试次数</td><td> {{logs.totalBrowsersTests}}</td> 
+             </tr>
+             <tr>
+                <td>成功测试数</td><td> {{logs.succTests}}</td>
+                <td>失败测试数</td><td> {{logs.failure}}</td>
+             </tr>
+             <tr>
+                <td>平均覆盖率</td><td> {{logs.totalCov / logs.succTests | number:2}}</td>
+                <td>平均测试用例</td><td> {{logs.totalTc / logs.succTests | number:2}}</td>
+             </tr>
+             <tr>
+                <td>测试平均时间</td><td> {{(logs.totalTime / logs.succTests) / 1000 | number:2}}s</td>
+                <td>浏览器平均运行时间</td><td> {{(logs.totalDuration / logs.succTests) / 1000 | number:2}}s</td>
+             </tr>
+             <tr>
+                <td>测试用例最多项目</td><td> <a ng-href="{{logs.maxTC[0]}}">{{logs.maxTC[0]}}</a> &nbsp; {{logs.maxTC[1]}}</td>
+                <td>测试覆盖率最高项目</td><td> <a ng-href="{{logs.maxCov[0]}}">{{logs.maxCov[0]}}</a> &nbsp;  {{logs.maxCov[1]}}</td>
+             </tr>
           </tbody>
         </table>
+
+        <div class="row">
+           <div class="col-lg-6">
+           
         <table class="table table-striped">
-          <h1>最近测试</h1>
+          <h3>最近测试</h3>
         <tbody>
           <tr ng-repeat="test in latest">
-              <td> {{test.repo}}</td>
-              <td>{{test.date}}</td>
+             <td><a ng-href="{{test.repo}}">{{test.repo}}</a></td>
+             <td>{{test.date}}</td>
           </tr>
         </tbody>
         </table>
-
+           </div>
+           <div class="col-lg-6">
         <table class="table table-striped">
         <tbody>
-              <h2>测试最多</h2>
-              <tr ng-repeat="test in most">
-                  <td> {{test[1]}}</td>
-                  <td>{{test[0]}}</td>
-              </tr>
+           <h3>测试最多</h3>
+           <tr ng-repeat="test in most">
+              <td> <a ng-href="{{test[1]}}">{{test[1]}}</a></td>
+               <td>{{test[0]}}</td>
+           </tr>
         </tbody>
         </table>
-
-      </div>
+           
+           </div>
+        </div>
     </div>
   </div>
 </div>
