@@ -4,57 +4,49 @@
   <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>totoro-log</title>
-    <link rel="canonical" href="./npm_files/npm.html">
     <link type="text/css" rel="stylesheet" media="all" href="./css/index.css">
     <link type="text/css" rel="stylesheet" media="all" href="./css/bootstrap.css">
   </head>
   <body ng-app="totoroLog">
   <div id="wrap">
-    <h1>totoro 日志分析</h1> 
+    <p>
+        <a href=./img/totoro.jpg" target="_blank"><img src="./img/totoro.jpg" alt="totoro" style="max-width:100%;"></a>
+    </p>
+    <h1>totoro</h1>
+    <p>简单易用、稳定的前端单元测试工具。</p>
     <div id="content" ng-controller="overviewCtrl">
-
-      <ul class="nav nav-pills"">
-        <li class="download">
-        <button type="button" class="btn btn-lg btn-primary" ng-click="selectDate()" ng-disabled="isAll">所有</button>
-        </li>
-         <li class="home">
-          <button type="button" class="btn btn-lg btn-primary" ng-click="selectDate('week')" ng-disabled="isWeek">一周</button>
-        </li>
-      </ul>
-      <div id="index">
-        <h3>Overview</h3>
-  
-        <table class="table table-striped">
+        <div id="index" style="max-width:100%;">
+        <table class="table">
           <p class="text-info" ng-hide="loaded">加载中...</p>
           <tbody ng-show="loaded">
              <tr>
-                <td>测试总数</td><td>{{logs.totalTests || 0}}</td>
-                <td>浏览器测试次数</td><td> {{logs.totalBrowsersTests}}</td> 
+                <td>过去一周运行了</td><td>{{weekLogs.totalTests || 0}}次单元测试</td>
              </tr>
              <tr>
-                <td>成功测试数</td><td> {{logs.succTests}}</td>
-                <td>失败测试数</td><td> {{logs.failure}}</td>
+                <td>成功率</td><td> {{(weekLogs.succTests / weekLogs.totalTests) * 100 | number:2}}%</td> 
              </tr>
              <tr>
-                <td>平均覆盖率</td><td> {{logs.totalCov / logs.succTests | number:2}}</td>
-                <td>平均测试用例</td><td> {{logs.totalTc / logs.succTests | number:2}}</td>
+                <td>平均覆盖率</td><td> {{(weekLogs.totalCov / weekLogs.succTests) | number:2}}%</td>
              </tr>
              <tr>
-                <td>测试平均时间</td><td> {{(logs.totalTime / logs.succTests) / 1000 | number:2}}s</td>
-                <td>浏览器平均运行时间</td><td> {{(logs.totalDuration / logs.succTests) / 1000 | number:2}}s</td>
+                <td>测试平均时间</td><td>  {{(logs.totalDuration / logs.succTests) / 1000 | number:2}} / {{(logs.totalTime / logs.succTests) / 1000 | number:2}}s</td>
              </tr>
              <tr>
-                <td>测试用例最多项目</td><td> <a ng-href="{{logs.maxTC[0]}}">{{logs.maxTC[0]}}</a> &nbsp; {{logs.maxTC[1]}}</td>
-                <td>测试覆盖率最高项目</td><td> <a ng-href="{{logs.maxCov[0]}}">{{logs.maxCov[0]}}</a> &nbsp;  {{logs.maxCov[1]}}</td>
+                <td>浏览器工作了</td><td> {{weekLogs.totalBrowsersTests}}次</td>
+             </tr>
+             <tr>
+                <td>过去一共运行了</td><td>{{logs.totalTests || 0}}次单元测试</td>
+             </tr>
+             <tr>
+                <td>成功率</td><td> {{(logs.succTests / logs.totalTests) * 100 | number:2}}%</td> 
              </tr>
           </tbody>
         </table>
 
-        <div class="row">
-           <div class="col-lg-6">
+        <div style="max-width:100%;">
            
         <table class="table table-striped">
-          <h3>最近测试</h3>
+          <h3>最近运行</h3>
         <tbody>
           <tr ng-repeat="test in latest">
              <td><a ng-href="{{test.repo}}">{{test.repo}}</a></td>
@@ -63,19 +55,6 @@
         </tbody>
         </table>
            </div>
-           <div class="col-lg-6">
-        <table class="table table-striped">
-        <tbody>
-           <h3>测试最多</h3>
-           <tr ng-repeat="test in most">
-              <td> <a ng-href="{{test[1]}}">{{test[1]}}</a></td>
-               <td>{{test[0]}}</td>
-           </tr>
-        </tbody>
-        </table>
-           
-           </div>
-        </div>
     </div>
   </div>
 </div>

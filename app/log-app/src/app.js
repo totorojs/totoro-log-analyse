@@ -24,16 +24,22 @@ define(function(require, exports, module) {
       $scope.selectDate('all')
 
       function loadLog(date) {
-          if (date === 'week') {
-              date = (moment().subtract('days', 7).format('YYYYMMDD') + '-' +
-                      moment().format('YYYYMMDD'))
-          }
+          var weekDate = date = moment().subtract('days', 7).format('YYYYMMDD')
+          var weekLoaded = false
+          var allLoaded = false
 
           $scope.loaded = false
 
-          logService.loadLog(date, function(data) {
+          logService.loadLog(null, function(data) {
               $scope.logs = data
-              $scope.loaded = true
+              allLoaded = true
+              $scope.loaded = weekLoaded && allLoaded 
+          })
+
+          logService.loadLog(weekDate, function(data) {
+              $scope.weekLogs = data
+              weekLoaded = true
+              $scope.loaded = allLoaded && weekLoaded 
           })
       }
 
@@ -51,7 +57,9 @@ define(function(require, exports, module) {
       return {
           loadLog: function(date, cb) {
               var url = '/log/'
-              url +=
+              if (date) {
+                 url += date
+              } 
               $http.get(url).success(function(data) {
                   cb(data)
               })
@@ -64,7 +72,6 @@ define(function(require, exports, module) {
           },
           getMost: function(cb) {
               $http.get('/most').success(function(data) {
-                  console.info('da--->', data)
                   cb(data)
               })
           }
