@@ -33,18 +33,19 @@ define(function(require, exports, module) {
           logService.loadLog(null, function(data) {
               $scope.logs = data
               allLoaded = true
-              $scope.loaded = weekLoaded && allLoaded 
+              $scope.loaded = weekLoaded && allLoaded
           })
 
           logService.loadLog(weekDate, function(data) {
               $scope.weekLogs = data
               weekLoaded = true
-              $scope.loaded = allLoaded && weekLoaded 
+              $scope.loaded = allLoaded && weekLoaded
           })
       }
 
       logService.getLatest(function(datas) {
-          $scope.latest = datas
+          $scope.latest = datas.datas.slice(0, 5)
+          $scope.succRate = datas.succRate
       })
 
       logService.getMost(function(datas) {
@@ -59,7 +60,7 @@ define(function(require, exports, module) {
               var url = '/log/'
               if (date) {
                  url += date
-              } 
+              }
               $http.get(url).success(function(data) {
                   cb(data)
               })
@@ -83,16 +84,16 @@ define(function(require, exports, module) {
           restrict: 'A',
           compile: function compile(tElement, tAttrs, transclude) {
               return {
-                  pre: function preLink(scope, element, attrs) { 
+                  pre: function preLink(scope, element, attrs) {
                   },
-                  post: function postLink(scope, element, attrs) { 
-                  } 
+                  post: function postLink(scope, element, attrs) {
+                  }
               }
           },
-          replace: true 
+          replace: true
       }
   })
-  
+
 
   app.factory('socket', function ($rootScope) {
       var socket = io.connect();

@@ -23,7 +23,7 @@
                 <td>过去一周运行了</td><td>{{weekLogs.totalTests || 0}}次单元测试</td>
              </tr>
              <tr>
-                <td>成功率</td><td> {{(weekLogs.succTests / weekLogs.totalTests) * 100 | number:2}}%</td> 
+                <td>成功率</td><td> {{succRate * 100 | number:2}}%</td> 
              </tr>
              <tr>
                 <td>平均覆盖率</td><td> {{(weekLogs.totalCov / weekLogs.succTests) | number:2}}%</td>
