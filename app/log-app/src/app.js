@@ -113,7 +113,7 @@ define(function(require, exports, module) {
                   if (data.isSucc) {
                       $element.html(data.repo)
                   } else {
-                      $element.html('<a style="color:red" href="#errors/' + data.orderList.slice(-1).pop() + '">' + data.repo + '</a>')
+                      $element.html('<a href="#errors/' + data.orderList.slice(-1).pop() + '">' + data.repo + '</a>')
                   }
               }
           }
