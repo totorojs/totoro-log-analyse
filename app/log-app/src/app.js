@@ -24,8 +24,8 @@ define(function(require, exports, module) {
   app.config(['$routeProvider', function($routeProvider) {
       $routeProvider.
           when('/', {controller: 'overviewCtrl', templateUrl: 'partials/index.html'}).
-          when('/errors', {templateUrl: 'partials/error-list.html',   controller: 'errorListCtrl'}).
-          when('/errors/:orderId', {templateUrl: 'partials/error-list.html',   controller: 'errorListCtrl'}).
+          when('/errors', {templateUrl: 'partials/error-list.html', controller: 'errorListCtrl'}).
+          when('/errors/:orderId', {templateUrl: 'partials/error-list.html', controller: 'errorListCtrl'}).
           otherwise({redirectTo: '/'});
   }])
 
