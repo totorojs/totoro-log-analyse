@@ -6,16 +6,6 @@
     <title>totoro-log</title>
     <link type="text/css" rel="stylesheet" media="all" href="./css/index.css">
     <link type="text/css" rel="stylesheet" media="all" href="./css/bootstrap.css">
-    <style type="text/css">
-        .left {
-            text-align:left;
-            margin-left:0px;
-        }
-        .right {
-            text-align:right;
-            margin-right:0px;
-        }
-    </style>
   </head>
   <body ng-app="totoroLog">
   <div id="wrap">
@@ -24,32 +14,7 @@
     </p>
     <h1>totoro</h1>
     <p style="margin-bottom: 30px">简单易用、稳定的前端单元测试工具。</p>
-    <div id="content" ng-controller="overviewCtrl">
-        <div id="index" style="max-width:100%;">
-            <p class="text-info" ng-hide="loaded">加载中...</p>
-            <dl class="dl-horizontal">
-              <dt>过去一周运行了</dt><dd>{{weekLogs.totalTests || 0}}次单元测试</dd>
-              <dt>浏览器工作了</dt><dd>{{weekLogs.totalBrowsersTests}}次</dd>
-
-              <dt>平均覆盖率</dt><dd>{{(weekLogs.totalCov / weekLogs.succTests) | number:2}}%</dd>
-              <dt>测试平均时间</dt><dd> {{(logs.totalDuration / logs.succTests) / 1000 | number:2}} / {{(logs.totalTime / logs.succTests) / 1000 | number:2}}s</dd>
-              <dt>过去一共运行了</dt><dd>{{logs.totalTests || 0}}次单元测试</dd>
-              <dt></dt><dd><a href="#errors">查看所有失败测试</a></dd>
-            </dl>
-        </div>
-
-        <div style="max-width:100%;">
-            <table class="table table-striped">
-              <h3>最近运行</h3>
-            <tbody>
-              <tr ng-repeat="test in latest">
-                 <td><repolink data={{test}}></td>
-                 <td>{{test.date}}</td>
-              </tr>
-            </tbody>
-            </table>
-        </div>
-  </div>
+    <div id="content" ng-view></div>
 </div>
 
 <script src="./sea-modules/seajs/seajs/2.1.1/sea.js"></script>

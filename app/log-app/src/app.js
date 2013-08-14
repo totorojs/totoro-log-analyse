@@ -5,9 +5,32 @@ define(function(require, exports, module) {
   var moment = require('moment')
   var app = angular.module('totoroLog', [])
 
+  app.controller('errorListCtrl', ['$scope', '$routeParams', '$location', 'logService', function($scope, $routeParams, $location, logService) {
+      var orderId = $routeParams.orderId || ' '
 
-  app.controller('overviewCtrl', ['$scope', 'logService', function($scope, logService) {
+      logService.getErrorList(function(datas) {
+          datas.forEach(function(data) {
+              if (data.orderList.indexOf(orderId) > -1) {
+                  data.show = true
+              } else {
+                  data.show = false
+              }
+          })
+          $scope.latest = datas
+      })
+  }])
 
+
+  app.config(['$routeProvider', function($routeProvider) {
+      $routeProvider.
+          when('/', {controller: 'overviewCtrl', templateUrl: 'partials/index.html'}).
+          when('/errors', {templateUrl: 'partials/error-list.html',   controller: 'errorListCtrl'}).
+          when('/errors/:orderId', {templateUrl: 'partials/error-list.html',   controller: 'errorListCtrl'}).
+          otherwise({redirectTo: '/'});
+  }])
+
+
+  var overviewCtrl = app.controller('overviewCtrl', ['$scope', '$routeParams', '$location', 'logService', function($scope, $routeParams, $location, logService) {
 
       $scope.selectDate = function(type) {
           if (type === 'week') {
@@ -48,10 +71,6 @@ define(function(require, exports, module) {
           $scope.succRate = datas.succRate
       })
 
-      logService.getMost(function(datas) {
-          $scope.most = datas
-      })
-
   }])
 
   app.factory('logService', ['$http', function($http) {
@@ -62,6 +81,12 @@ define(function(require, exports, module) {
                  url += date
               }
               $http.get(url).success(function(data) {
+                  cb(data)
+              })
+          },
+
+          getErrorList: function(cb) {
+              $http.get('/errors').success(function(data) {
                   cb(data)
               })
           },
@@ -88,8 +113,18 @@ define(function(require, exports, module) {
                   if (data.isSucc) {
                       $element.html(data.repo)
                   } else {
-                      $element.html('<a style="color:red" href="#errors/' + data.orderList.pop() + '">' + data.repo + '</a>')
+                      $element.html('<a style="color:red" href="#errors/' + data.orderList.slice(-1).pop() + '">' + data.repo + '</a>')
                   }
+              }
+          }
+      }
+  })
+
+  app.directive('errlink', function() {
+      return {
+          restrict: 'E',
+          compile: function() {
+              return function($scope, $element, $attr, $routeParams){
               }
           }
       }
@@ -119,7 +154,6 @@ define(function(require, exports, module) {
         }
       };
   });
-
 
 
   return {

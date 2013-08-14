@@ -1,0 +1,19 @@
+<div style="max-width:100%;">
+    <a href="/"> 返回 </a>
+    <table class="table table-striped">
+    <tbody>
+      <tr ng-repeat="test in latest">
+         <td>
+             <ul>
+                 <li><repolink data={{test}}></li>
+                 <ul ng-show="{{test.show}}">
+                     <li ng-repeat="msg in test.errMsg">{{msg}}</li>
+                 </ul>
+             </ul>
+         </td>
+         <td>{{test.date}}</td>
+      </tr>
+    </tbody>
+    </table>
+</div>
+
