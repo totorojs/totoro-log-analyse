@@ -79,18 +79,19 @@ define(function(require, exports, module) {
       }
   }])
 
-  app.directive('tdlink', function() {
+  app.directive('repolink', function() {
       return {
-          restrict: 'A',
-          compile: function compile(tElement, tAttrs, transclude) {
-              return {
-                  pre: function preLink(scope, element, attrs) {
-                  },
-                  post: function postLink(scope, element, attrs) {
+          restrict: 'E',
+          compile: function() {
+              return function($scope, $element, $attr){
+                  var data = JSON.parse($attr.data)
+                  if (data.isSucc) {
+                      $element.html(data.repo)
+                  } else {
+                      $element.html('<a style="color:red" href="#errors/' + data.orderList.pop() + '">' + data.repo + '</a>')
                   }
               }
-          },
-          replace: true
+          }
       }
   })
 
