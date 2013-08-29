@@ -5,13 +5,12 @@ var path = require('path')
 var commander = require('commander')
 var colorful = require('colorful')
 
-var logService = require('../lib/log-service')
+var server = require('../lib/server')
 
 commander
     .description('totoro server log analyse')
     .option('-v, --version', 'output the version number')
     .option('--verbose', 'show debug log')
-    .option('--path <s>', 'log dir path')
     .on('version', function() {
         console.log()
         var pkg = require('../package')
@@ -50,6 +49,4 @@ function helpInfo() {
     ].join('\n')
 }
 
-logService.analyse({}, function() {
-    process.exit()
-})
+server.create()
