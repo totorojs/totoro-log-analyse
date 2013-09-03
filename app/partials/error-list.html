@@ -8,7 +8,9 @@
                  <li><repolink data={{test}}>
                  </li>
                  <ul ng-show="{{test.show}}" style="list-style: none;">
-                     <li ng-repeat="msg in test.errMsg" style="margin-left:0px">{{msg}}</li>
+                     <li ng-repeat="msg in test.errMsg" style="margin-left:0px">
+                     {{msg.ua}}
+                     </li>
                  </ul>
              </ul>
          </td>
