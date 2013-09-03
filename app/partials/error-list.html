@@ -5,18 +5,26 @@
       <tr ng-repeat="test in latest">
          <td>
              <ul style="list-style: none;">
-                 <li><repolink data={{test}}>
-                 </li>
+                 <li><repolink data={{test}}></li>
                  <ul ng-show="{{test.show}}" style="list-style: none;">
                      <li ng-repeat="msg in test.errMsg" style="margin-left:0px">
-                     {{msg.ua}}
+                        <div ng-if="msg.ua">
+                            <b>{{msg.ua}}</b>
+                             <ul style="list-style: none;">
+                                <li ng-repeat="error in msg.errors" style="margin-left:0px">
+                                  {{error}}
+                                </li>
+                             </ul>
+                          </div>
+                          <div ng-if="!msg.ua">
+                              {{msg}}
+                          </div>
                      </li>
                  </ul>
              </ul>
          </td>
-         <td>{{test.date}}</td>
+         <td style="width:150px">{{test.date}}</td>
       </tr>
     </tbody>
     </table>
 </div>
-
