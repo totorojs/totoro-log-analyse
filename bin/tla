@@ -6,18 +6,20 @@ var commander = require('commander')
 var colorful = require('colorful')
 
 var server = require('../lib/server')
+var logger = require('../lib/logger')()
+var dbLog = require('../lib/get-log')()
 
 commander
-    .description('totoro server log analyse')
-    .option('-v, --version', 'output the version number')
-    .option('--verbose', 'show debug log')
-    .on('version', function() {
-        console.log()
-        var pkg = require('../package')
-        console.log('  ' + colorful.cyan(pkg.version))
-        console.log()
-        process.exit(0)
-    }).helpInformation = helpInfo
+  .description('totoro server log analyse')
+  .option('-v, --version', 'output the version number')
+  .option('--verbose', 'show debug log')
+  .on('version', function() {
+      console.log()
+      var pkg = require('../package')
+      console.log('  ' + colorful.cyan(pkg.version))
+      console.log()
+      process.exit(0)
+  }).helpInformation = helpInfo
 
 
 // listen before parse
@@ -49,4 +51,8 @@ function helpInfo() {
     ].join('\n')
 }
 
-server.create()
+dbLog.init().then(function(models) {
+  server.create()
+  logger.analyse(models)
+})
+
