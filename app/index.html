@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- saved from url=(0018)https://npmjs.org/ -->
+<html lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>totoro-log</title>
+    <link type="text/css" rel="stylesheet" media="all" href="./css/index.css">
+    <link type="text/css" rel="stylesheet" media="all" href="./css/bootstrap.css">
+  </head>
+  <body ng-app="totoroLog">
+  <div id="wrap">
+    <p>
+        <a href=./img/totoro.jpg" target="_blank"><img src="./img/totoro.jpg" alt="totoro" style="max-width:100%;"></a>
+    </p>
+    <h1>totoro</h1>
+    <p style="margin-bottom: 30px">简单易用、稳定的前端单元测试工具。</p>
+    <div id="content" ng-view></div>
+</div>
+
+<script src="./sea-modules/seajs/seajs/2.1.1/sea.js"></script>
+<script>
+
+  // Set configuration
+  seajs.config({
+    base: "/sea-modules/",
+    alias: {
+      "angularjs": "/sea-modules/angular/angularjs/1.1.5/angular.js",
+      "ngResource": "/sea-modules/angular/angularjs/1.1.5/angular-resource.js",
+      "moment": "/sea-modules/gallery/moment/2.0.0/moment.js",
+      "logApp": "./log-app/src/app.js"
+    }
+  })
+
+  seajs.use("logApp", function(app) {
+
+  })
+
+</script>
+
+</body>
+</html>
+
