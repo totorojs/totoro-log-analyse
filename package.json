@@ -4,22 +4,22 @@
   "description": "Totoro server log analyse.",
     "homepage": "https://github.com/totorojs/totoro-log-analyse",
     "keywords": [
-        "totoro",
-        "log",
-        "analyse"
+      "totoro",
+      "log",
+      "analyse"
     ],
     "author": "fool2fish <fool2fish@gmail.com>",
     "contributors": [
-        "kangpangpang <kangpangpang@gmail.com>"
+      "kangpangpang <kangpangpang@gmail.com>"
     ],
   "dependencies": {
-      "commander": "1.2.0",
-      "colorful": "2.1.0",
-      "line-reader": "0.2.3",
-      "when": "2.2.1",
-      "useragent":"2.0.3",
-      "pretty-data": "*",
-      "shelljs": "*"
+    "commander": "1.2.0",
+    "colorful": "2.1.0",
+    "line-reader": "0.2.3",
+    "when": "2.2.1",
+    "useragent":"2.0.3",
+    "pretty-data": "*",
+    "shelljs": "*"
   },
   "bin": {
     "tla": "./bin/tla"
