@@ -8,7 +8,6 @@ var colorful = require('colorful')
 var analyse = require('../lib/analyse')
 
 commander
-    .description('totoro server log analyse')
     .option('-v, --version', 'output the version number')
     .option('--verbose', 'show debug log')
     .option('--path <s>', 'log dir path')
@@ -35,7 +34,7 @@ function helpInfo() {
 
     return [
         '',
-        colorful.cyan('  ' + this.description()),
+        colorful.cyan('  Totoro server log analyse.'),
         '',
         colorful.green('  Usage:'),
         '    ' + this._name + ' ' + this.usage(),
