@@ -1,6 +1,17 @@
 {
   "name": "totoro-log-analyse",
-  "version": "0.3.0",
+  "version": "0.4.0",
+  "description": "Totoro server log analyse.",
+    "homepage": "https://github.com/totorojs/totoro-log-analyse",
+    "keywords": [
+        "totoro",
+        "log",
+        "analyse"
+    ],
+    "author": "fool2fish <fool2fish@gmail.com>",
+    "contributors": [
+        "kangpangpang <kangpangpang@gmail.com>"
+    ],
   "dependencies": {
       "commander": "1.2.0",
       "colorful": "2.1.0",
@@ -9,5 +20,9 @@
       "useragent":"2.0.3",
       "pretty-data": "*",
       "shelljs": "*"
-  }
+  },
+  "bin": {
+    "tla": "./bin/tla"
+  },
+  "preferGlobal": true
 }
