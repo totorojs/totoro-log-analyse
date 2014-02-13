@@ -11,6 +11,7 @@ var tla  = require('../')
 commander
   .description('Totoro server log analyse.')
   .option('-v, --version', 'output the version number')
+  .option('-d, --debug', 'show debug log')
   .option('-p, --path', 'log files path')
   .option('-D, --db', 'db server')
   .option('-u, --user', 'db user name')
