@@ -13,6 +13,7 @@ commander
   .option('-v, --version', 'output the version number')
   .option('-d, --debug', 'show debug log')
   .option('-D, --dir', 'log directory')
+  .option('-S, --start', 'start date of log file to process')
   .option('-s, --db', 'db server')
   .option('-u, --user', 'db user name')
   .option('-w, --pwd', 'db password')
