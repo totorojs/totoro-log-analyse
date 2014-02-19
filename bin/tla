@@ -6,6 +6,7 @@ var commander = require('commander')
 var colorful = require('colorful')
 var common = require('totoro-common')
 
+var pkg = require('../package')
 var tla  = require('../')
 
 commander
@@ -21,7 +22,6 @@ commander
   .option('-P, --port [n]', 'server port')
   .on('version', function() {
     console.log()
-    var pkg = require('../package')
     console.log('  ' + colorful.cyan(pkg.version))
     console.log()
     process.exit(0)
@@ -65,7 +65,7 @@ function helpInfo() {
     '' + this.optionHelp().replace(/^/gm, '    '),
     '',
     colorful.green('  More Info:'),
-    '    ' + colorful.underline('https://github.com/totorojs/totoro-log-analyse'),
+    '    ' + colorful.underline(pkg.homepage),
     '',
     ''
   ].join('\n')
