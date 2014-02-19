@@ -16,7 +16,7 @@ commander
   .option('-D, --dir [s]', 'log directory')
   .option('-S, --start [s]', 'start date of log file to process')
   .option('-s, --db [s]', 'db server')
-  .option('-u, --user [s]', 'db user name')
+  .option('-n, --name [s]', 'db user name')
   .option('-w, --pwd [s]', 'db password')
   .option('-H, --host [s]', 'http server host')
   .option('-P, --port [n]', 'http server port')
