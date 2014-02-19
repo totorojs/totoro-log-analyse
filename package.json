@@ -2,17 +2,17 @@
   "name": "totoro-log-analyse",
   "version": "0.4.0",
   "description": "Totoro server log analyse.",
-    "homepage": "https://github.com/totorojs/totoro-log-analyse",
-    "keywords": [
-      "totoro",
-      "log",
-      "analyse",
-      "front end test"
-    ],
-    "author": "fool2fish <fool2fish@gmail.com>",
-    "contributors": [
-      "kangpangpang <kangpangpang@gmail.com>"
-    ],
+  "homepage": "https://github.com/totorojs/totoro-log-analyse",
+  "keywords": [
+    "totoro",
+    "log",
+    "analyse",
+    "front end test"
+  ],
+  "author": "fool2fish <fool2fish@gmail.com>",
+  "contributors": [
+    "kangpangpang <kangpangpang@gmail.com>"
+  ],
   "dependencies": {
     "commander": "1.2.0",
     "colorful": "2.1.0",
