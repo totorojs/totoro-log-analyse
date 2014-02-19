@@ -18,8 +18,8 @@ commander
   .option('-s, --db [s]', 'db server')
   .option('-u, --user [s]', 'db user name')
   .option('-w, --pwd [s]', 'db password')
-  .option('-H, --host [s]', 'server host')
-  .option('-P, --port [n]', 'server port')
+  .option('-H, --host [s]', 'http server host')
+  .option('-P, --port [n]', 'http server port')
   .on('version', function() {
     console.log()
     console.log('  ' + colorful.cyan(pkg.version))
