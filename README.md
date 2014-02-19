@@ -74,7 +74,7 @@ Db server.
 
 Default: 'localhost:27017/totoro'
 
-### -n, --name
+### -u, --user
 
 Db user name that is given readWrite privileges.
 
