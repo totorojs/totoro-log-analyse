@@ -1,3 +1,3 @@
 # tla
 
-Totoro server log analyse.
+Totoro log analyse.

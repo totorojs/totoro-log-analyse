@@ -1,7 +1,7 @@
 {
   "name": "totoro-log-analyse",
   "version": "0.4.0",
-  "description": "Totoro server log analyse.",
+  "description": "Totoro log analyse.",
   "homepage": "https://github.com/totorojs/totoro-log-analyse",
   "keywords": [
     "totoro",
