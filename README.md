@@ -34,7 +34,7 @@ $ npm install -g
 
 Then, [create a database](http://docs.mongodb.org/manual/tutorial/getting-started/#select-a-database) (recommend named it `totoro`) and [add a user](http://docs.mongodb.org/manual/tutorial/add-user-to-database/) which has readWrite privileges to it.
 
-Last, restart mongodb with [auth option](http://docs.mongodb.org/manual/reference/configuration-options/#auth)
+Last, restart mongodb with [auth option](http://docs.mongodb.org/manual/reference/configuration-options/#auth) .
 
 
 ## 3. Cli Options
