@@ -4,7 +4,7 @@
 
 Totoro log analyse.
 
-Latest stable version：v0.5.0
+Latest stable version：v0.5.x
 
 ---
 
