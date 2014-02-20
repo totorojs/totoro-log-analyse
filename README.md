@@ -41,7 +41,7 @@ Last, restart mongodb with [auth option](http://docs.mongodb.org/manual/referenc
 
 ### -D, --dir
 
-Specifies log directory
+Specifies log directory.
 
 Default: 'totoro-server-logs/'
 
