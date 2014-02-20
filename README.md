@@ -13,7 +13,7 @@ Latest stable version：v0.5.x
 ### Install from npm
 
 ```
-$ npm install totoro-log-analyse -g
+$ npm install totoro-log-analyse
 ```
 
 If it not works, you may need add `sudo` before the command, as follows.
