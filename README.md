@@ -13,7 +13,7 @@ Latest stable version：v0.5.x
 ### Install from npm
 
 ```
-$ npm install totoro-log-analyse
+$ npm install totoro-log-analyse -g
 ```
 
 If it not works, you may need add `sudo` before the command, as follows.
@@ -30,12 +30,38 @@ $ npm install -g
 
 ## 2. Set Mongodb
 
-`tla` use mongodb to store log message, thus, first of all, [install](http://docs.mongodb.org/manual/installation/) it.
+1. `tla` use mongodb to store log message, thus, [install](http://docs.mongodb.org/manual/installation/) it first.
 
-Then, [create a database](http://docs.mongodb.org/manual/tutorial/getting-started/#select-a-database) (recommend named it `totoro`) and [add a user](http://docs.mongodb.org/manual/tutorial/add-user-to-database/) which has readWrite privileges to it.
+2. Start mongod.
 
-Last, restart mongodb with [auth option](http://docs.mongodb.org/manual/reference/configuration-options/#auth) .
+    ```
+    $ mongod
+    ```
 
+3. Connect to mongod and [create a database](http://docs.mongodb.org/manual/tutorial/getting-started/#connect-to-a-mongod) named `totoro`.
+
+    ```
+    $ mongo
+    > use totoro
+    ```
+
+4. [Add a user](http://docs.mongodb.org/manual/tutorial/add-user-to-database/#create-the-new-user) which has readWrite privileges to it.
+
+    ```
+    > db.addUser({
+        user: '{{userName}}',
+        pwd: '{{password}}',
+        roles: [ 'readWrite' ]
+      })
+      
+    // If db.addUser() dose't work, you may use db.createUser()
+    ```
+
+5. Restart mongod with [auth option](http://docs.mongodb.org/manual/reference/configuration-options/#auth) .
+  
+    ```
+    $ mongod --auth
+    ```
 
 ## 3. Cli Options
 
