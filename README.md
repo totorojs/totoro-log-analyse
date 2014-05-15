@@ -64,7 +64,7 @@ If specifies `--start=20140201`, `tla` will process log files created since 2014
 
 If not specifies this option, will only process log files created today and later.
 
-NOTE: `tla` will handle repeat log message and watch increased log message automatically.
+NOTE: `tla` will handle repeated log message and watch increased log message automatically.
 
 Default: today
 
