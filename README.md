@@ -4,7 +4,7 @@
 
 Totoro log analyse.
 
-Latest stable version：v0.5.x
+Latest stable version：v2.0.0
 
 ---
 
@@ -53,12 +53,12 @@ $ npm install -g
         pwd: '{{password}}',
         roles: [ 'readWrite' ]
       })
-      
+
     // If db.addUser() dose't work, you may use db.createUser()
     ```
 
 5. Restart mongod with [auth option](http://docs.mongodb.org/manual/reference/configuration-options/#auth) .
-  
+
     ```
     $ mongod --auth
     ```
